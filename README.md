@@ -2,7 +2,7 @@
 
 My notes of learning web develop contain html, css, js, php, mysql, nodejs, vue, angular, react... ...
 
-<img src="http://a1.att.hudong.com/35/79/01300000164586122236795906560.jpg" width="600"> 学习使我快乐！
+<img src="http://a1.att.hudong.com/35/79/01300000164586122236795906560.jpg" width="600"> 
 
  - ### basic
  
