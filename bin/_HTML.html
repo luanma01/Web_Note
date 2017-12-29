@@ -1,0 +1,425 @@
+通用属性
+	id/title/class/style
+
+标题元素
+	h1,h2,h3,h4,h5,h6
+	align="left/center/right"
+
+段落元素
+	<p align="left/center/right">
+
+文本元素
+	b 加粗,i 斜体,u 下划线,s 删除线,sub 下标,sup 上标
+
+超链接元素
+	<a href="url" target="_self/_blank">
+	href="mailto:邮箱地址"
+	href="#"
+	href="javascript:JS代码"
+	href="×××.rar/zip"
+	name="锚点名"  定义锚点
+	href="URL#锚点名"  跳动锚点
+	href="#id值"  跳到锚点
+
+布局元素
+	div
+	span
+	header 头部
+	nav 导航栏
+	section 主体内容
+	aside 侧边栏
+	footer 尾部
+	article 文字描述
+
+预格式化元素
+	pre
+
+分割线元素
+	<hr>
+	size="px/%"
+	width="px/%"
+	align="left/center/right"
+	color="..."
+
+换行元素
+	<br>
+
+图像元素
+	<img src="url" alt="报错" width="px/%" height="px/%">
+
+表单元素
+	form
+	action="url"
+	method="get/post/delete/put"
+	enctype="
+		application/x-www-form-urlencoded
+		multipart/from-data
+		text/plain
+	"
+	<fieldset></fieldset>为控件分组
+	<legend></legend>为分组指定标题 
+
+表单控件元素
+	<input>	
+		name="控件名称"
+		value="控件值"
+		disabled 禁用
+		type="text/password" 文本框/密码框
+			maxlength="限定最多字符数"
+			minlength="限定最少字符数"
+			max="数字最大值"
+			min="数字最小值"
+			readonly 只读
+			placeholder="占位符"
+			autofocus 自动获取焦点
+			multiple 允许出现多个输入值
+			required 必填
+			pattern="正则表达式"
+			form="id值" 输入框外置
+		type="submit/reser/button" 提交按钮/重置按钮/普通按钮
+		type="radio" 单选按钮
+		type="checkbox" 复选框
+			checked 默认选中
+		type="hidden" 隐藏域
+		type="file" 文件选中框
+		type="search" 快速清除
+		type="color/date/week/month" 提供颜色拾取/日期选取/星期选取/月份选取组件
+		type="range" 提供滑块组件
+			min="最小值"
+			max="最大值"
+			step="步长"
+			value="初始值"
+		type="email/url" 邮箱/路径基本验证
+		type="number" 只接受数字
+			min="最小"
+			max="最大"
+			step="每次变化范围"
+			value="当前值"
+	<textarea name=""cols="列数" rows="行数" readonly>多行文本域</textarea>
+	<select name="" size="显示数量" multiple(多选)>选项框
+		<option value="" selected(默认选中)>选项</option>	
+	</select>
+	<label for="控件id值">文本</label>
+	<iframe src="" width="" height="" frameborder="">浮动框架</iframe>
+	<button>按钮</button>
+	<datalist id=""> 输入建议列表;用list="id值"调用
+		<option></option>
+	</datalist>
+	<progress value="0~1">进度条</progress>
+	<meter min="" max="" low="" high="" optimum="" value=""></meter>
+	<output></output>
+
+列表
+	<ul type="disc/circle/square/none">
+		<li></li>
+	</ul>
+	<ol type="1/a/A/i/I" start="">
+		<li></li>
+	</ol>
+	<dl>
+		<dt></dt>
+		<dd></dd>
+	</dl>	
+
+表格
+	<table width="" height="" border="" bgcolor="" align="left/center/right" cellpadding="单元格内边距" cellspacing="单元格外边距">
+		<caption>标题</caption>
+		<thead>
+			<tr align="left/center/right" valign="top/middle/bottom" bgcolor="">
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td width="" height="" align="" valign="" bgcolor="" colspan="夸列" rowspan="跨行"></td>
+			</tr>
+		</tbody>
+		<tfoot></tfoot>
+	</table>
+
+特殊字符
+	&nbsp; 空格
+	&lt; <
+	&gt; >
+	&copy ©
+	&yen; ¥
+
+视频
+	<video autoplay(自动播放) controls(显示播放控件) loop(循环播放) muted(静音) poster="海报url" preload="auto/metadata/none"(预加载)>
+		<source src="×××.mp4"/>
+		<source src="×××.ogg"/>
+		......
+		您的游览器不支持video播放
+	</video>
+	JS对象属性
+		currentTime 当前播放的时长
+		duration 总时长
+		paused 当前视频处于暂停状态
+		volume 当前音量,默认为1
+		playbackRate 回放速度,默认为1,大于1块放,小于1慢放
+		play() 播放视频
+		pause() 暂停播放
+		onplay 当视频开始播放时触发的事件
+		onpause 当视频开始暂停是触发的事件
+
+音频
+	<audio autoplay(自动播放) controls(显示播放控件) loop(循环播放) muted(静音) preload="auto/metadata/none"(预加载)>
+		<source src="×××.mp3">
+		<source src="×××.wav">
+		......
+		您的游览器不支持video播放
+	</audio>
+	JS对象属性
+		currentTime 当前播放的时长
+		duration 总时长
+		paused 当前音频处于暂停状态
+		volume 当前音量,默认为1
+		playbackRate 回放速度,默认为1,大于1块放,小于1慢放
+		play() 播放音频
+		pause() 暂停播放
+		onplay 当音频开始播放时触发的事件
+		onpause 当音频开始暂停是触发的事件
+	
+Canvas绘图
+	<canvas id="cv" width="" height="">画布</canvas>
+	JS对象属性
+		var ctx = cv.getContext("2d"); 画笔
+		ctx.lineWidth="数字"; 描边宽度
+		ctx.strokeStyle="颜色"; 描边样式
+		ctx.fillStyle="颜色"; 填充样式
+		矩形
+			ctx.fillRect(x,y,w,h); 填充一个矩形
+			ctx.strokeRect(x,y,w,h); 描边一个矩形
+			ctx.clearRect(x,y,w,h); 清除一个矩形范围绘图
+		文本
+			ctx.textBaseline="alphabetic"; 文本基线
+			ctx.font="数字px 字体"; 文本大小和字体
+			ctx.fillText(str,x,y); 填充文本
+			ctx.strokText(str,x,y); 描边文本
+			ctx.measureText(str); 文本宽度,返回{width:x}
+		渐变
+			var g=ctx.createLinearGradient(x1,y1,x2,y2);
+			g.addColorStop(0,"颜色"); 起点
+			...
+			g.addColorStop(1,"颜色"); 终点
+		图像
+			var p=new Image();
+			p.src="url";
+			p.onload=function(){ 下载完成执行
+				ctx.drawImage(p,x,y); 原始大小绘图
+				ctx.drawImage(p,x,y,w,h); 拉伸图片绘图
+			}
+		变形
+			ctx.rotate(弧度); 旋转画笔
+			ctx.translate(x,y); 原点平移
+			ctx.save(); 保存画笔当前所有变形值
+			ctx.restore(); 恢复画笔状态到最近一次保存
+		路径
+			ctx.beginPath(); 开始一条新路径
+			ctx.closePath(); 闭合当前路径
+			ctx.moveTo(x,y); 移动到指定点
+			ctx.lineTo(x,y); 从当前点到指定点画直线
+			ctx.arc(cx,cy,r,start,end); 绘制圆拱路径
+			ctx.stroke(); 描边
+			ctx.fill();  填充
+			ctx.clip(); 裁剪
+
+SVG绘图
+	<svg width="" height=""> 画布
+		<rect width="" height="" x="" y="" fill="" fill-opacity="" stroke="" stroke-width="" stroke-opacity="">矩形</rect>
+		<circle r="" cx="" cy="" fill="" fill-opacity="" stroke="" stroke-width="" stroke-opacity="">圆形</circle>
+		<ecllipse cx="" cy="" rx="" ry="" fill="" fill-opacity="" stroke="" stroke-width="" stroke-opacity="">椭圆</ecllipse>
+		<line x1="" y1="" x2="" y2="" stroke="" stroke-width="" stroke-linecap="butt/square/round">直线</line>
+		<polyline points="x1,y1 x2,y2 ..." fill="transparent" stroke="">折线</polyline>
+		<text x="" y="" fill="" stroke="" font-size="" alignment-baseline="before-edge">文本</text>
+		<image x="" y="" width="" height="" xlink:href="url">图片</image>
+		<defs>
+			<filter id="f"> 滤镜
+				<feGaussianBlur stdDeviation="数字"/>
+			</filter>
+			<linearGradient id="g" x1="" y1="" x2="" y2=""> 渐变
+				<stop offset="0%" stop-color="颜色"/>
+				 ...
+				<stop offset="100%" stop-color="颜色"/>
+			</linearGradient>
+		</defs>
+		<ANY fill="url(#g)" stroke="url(#g)"></ANY>
+		<ANY filter="url(#f)"></ANY>
+	</svg>
+	svg文件
+		<?xml version="1.0" encoding="utf-8"?>
+		<svg width="" height="" xmlns="http://www.w3.org/2000/svg">
+			...
+		</svg>
+
+第三方绘图工具
+	d3.js插件
+	echarts.js插件
+	two.js插件
+		var two = new Two({...}).appendTo(id值); 创建对象
+		var c=two.makeCircle(cx,cy,r); 绘制圆形
+		var r=two.makeRectangle(x,y,w,h); 绘制矩形
+		two.update(); 把绘图内容绘制DOM树
+
+geolocation地理定位
+  navigator.geolocation.getCurrentPosition(succCB,errCB);   
+	function succCB(pos){ //如果定位成功执行该函数
+		console.log("定位时间",pos.timestamp);
+		console.log("定位纬度",pos.coords.latitude);
+		console.log("定位经度",pos.coords.longitude);
+		console.log("定位海拨",pos.coords.altitude);
+		console.log("定位速度",pos.coords.speed);
+	}
+	function errCB(err){ //如果定位失败执行该函数
+		console.log(err.code);
+		console.log(err.message);
+	}
+
+百度地图
+	http://lbsyun.baidu.com/开户,申请AccessKey,生成AK
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<script src="http://api.map.baidu.com/api?v=2.0
+	&ak=密钥"></script>
+	<script type="text/javascript">
+		var map=new BMap.Map("id值");//创建地图
+		var point=new BMap.Point(经度,纬度);//创建点坐标
+		map.centerAndZoom(point,1~19);//初始化地图,设置中心点坐标和地图级别
+		map.addControl(new BMap.NavigationControl());//导航控件
+		map.addControl(new BMap.ScaleControl());//缩放控件
+		map.addControl(new BMap.OverviewMapControl());//概览图控件
+		map.addControl(new BMap.MapTypeControl());//地图类型控件
+		var mk=new BMap.Marker(point);//创建覆盖物
+		mk.setAnimation(BMAP_ANIMATION_BOUNCE);//选择覆盖物
+		map.addOverlay(mk);//地图添加覆盖物
+	</script>
+
+拖放API
+	源对象
+		dragstart 拖动开始
+		drag 拖动中
+		dragend 拖动结束
+	目标对象
+		dragenter 拖动着进入
+		dragleave 拖动着离开
+		drop 拖动释放
+		dragover 拖动着悬停 e.preventDefault()
+
+WebWorker 线程
+	var w=new Worker("×××.js"); 创建对象
+	w.postMessage(string); 发送数据
+	w.onmessage=function(e){ 接受数据
+		var str=e.data; 保存数据
+	}
+
+WebStorage
+	window.sessionStorage对象
+		sessionStorage[key]=value; 保存数据
+		sessionStorage.setItem(key,value); 保存数据
+		sessionStorage[key]; 获取数据
+		sessionStorage.getItem(key); 获取数据
+		sessionStorage.removeItem(key); 删除数据
+		sessionStorage.clear(); 清除数据
+		sessionStorage.length; 数据个数
+		sessionStorage.key(i); 获取第i个key
+	localStorage对象
+		localStorage [key]=value; 保存数据
+		localStorage.setItem(key,value); 保存数据
+		localStorage [key]; 获取数据
+		localStorage.getItem(key); 获取数据
+		localStorage.removeItem(key); 删除数据
+		localStorage.clear(); 清除数据
+		localStorage.length; 数据个数
+		localStorage.key(i); 获取第i个key
+
+WebSocket协议
+	var ws = new WebSocket("ws://127.0.0.1:9001");连接到ws服务器
+	ws.send(string);向服务器发消息
+  ws.onmessage=function(e){e.data}接收服务器发来消息
+	ws.close();断开WS服务器的连接
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>标题</title>
+		<style>内联样式表</style>
+		<link rel="stylesheet" href="外联样式表url">		
+	</head>
+	<body>
+	</body>
+	<script src="JS脚本文件"></script>
+</html>
+
+游戏开发引擎
+	cocos2d-js
+	egret
+	lufylegend
+3D引擎
+	three.js
+
+requestanimationframe
+	启动定时器
+		var timer=requestAnimationFrame(function fn(){
+			timer=requestAnimationFrame(fn);  =>  setInterval
+		}); 
+	取消定时器
+		cancelAnimationFrame(timer);
+		cancelAnimationFrame(1);
+	简单兼容
+		if(!window.requestAnimationFrame){
+    	requestAnimationFrame=function(fn){
+        setTimeout(fn,17);
+    	};    
+		}
+		window.requestAnimFrame=(function(){
+		  return  window.requestAnimationFrame       ||
+		          window.webkitRequestAnimationFrame ||
+		          window.mozRequestAnimationFrame    ||
+		          function(callback){
+		            window.setTimeout(callback,1000/60);
+		          };
+		})();
+	严格兼容
+		if(!window.requestAnimationFrame){
+	    var lastTime=0;
+	    window.requestAnimationFrame=function(callback){
+        var currTime=new Date().getTime();
+        var timeToCall=Math.max(0,16.7-(currTime-lastTime));
+        var id=window.setTimeout(function(){
+          callback(currTime+timeToCall);
+        },timeToCall);
+        lastTime=currTime+timeToCall;
+        return id;
+	    }
+		}
+		if(!window.cancelAnimationFrame){
+    	window.cancelAnimationFrame=function(id){
+        clearTimeout(id);
+    	};
+		}
+		(function(){
+	    var lastTime=0;
+	    var vendors=['webkit','moz'];
+	    for(var x=0;x< vendors.length&&!window.requestAnimationFrame;++x){
+	      window.requestAnimationFrame=window[vendors[x]+'RequestAnimationFrame'];
+	      window.cancelAnimationFrame=window[vendors[x]+'CancelAnimationFrame']||    // Webkit中此取消方法的名字变了
+	      window[vendors[x]+'CancelRequestAnimationFrame'];
+	    }
+	    if(!window.requestAnimationFrame){
+        window.requestAnimationFrame=function(callback,element){
+          var currTime=new Date().getTime();
+          var timeToCall=Math.max(0,16.7-(currTime-lastTime));
+          var id=window.setTimeout(function(){
+            callback(currTime+timeToCall);
+          },timeToCall);
+          lastTime=currTime+timeToCall;
+          return id;
+        };
+	    }
+	    if(!window.cancelAnimationFrame){
+	      window.cancelAnimationFrame=function(id){
+	        clearTimeout(id);
+	      };
+	    }
+		}());

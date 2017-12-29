@@ -1,0 +1,257 @@
+通用选择器
+	*{...}
+元素选择器
+	ANY{...}
+类选择器
+	.类名{...}
+分类选择器
+	元素选择器.类选择器{...}
+多类选择器
+	<ANY class="类名1 类名2 ...">
+id选择器
+	#id值{...}
+群组选择器
+	选择器1,选择器2,...{...}
+子代选择器
+	选择器1>选择器2{...}
+后代选择器
+	选择器1 选择器2{...}
+相邻兄弟选择器
+	选择器1+选择器2{...}
+通用兄弟选择器
+	选择器1~选择器2{...}
+属性选择器
+	[attr]{...}
+	elem[attr]{...}
+	[attr1][attr2]{...}
+	[attr=value]{...}
+伪类选择器
+	:link 匹配元素尚未被访问时候的状态
+	:visited 匹配元素访问过的状态
+	:hover 匹配鼠标悬停在元素上时的状态
+	:active 匹配元素被激活时的状态
+	:focus 匹配元素获取焦点时的状态
+	:first-child 匹配父元素下第一个子元素
+	:last-child 匹配父元素下最后一个子元素
+	:nth-child(n)匹配父元素下第n个子元素	
+	:only-child 匹配父元素下无兄弟元素的子元素
+	:empty 匹配无内容的元素
+	:not(选择器1) 匹配除了选择器1外的元素
+	:target 匹配被激活的锚点
+	:first-line或::first-line 匹配元素的首字符
+	:first-line或::first-line 匹配元素的首行
+	::selection 匹配被用户选取的内容(修改文本/背景颜色)
+	:before或::before 匹配某元素的内容区域之前
+	:after或::after 匹配某元素的内容区域之后
+
+样式优先级
+	!important>内联样式>内/外部样式表>id选择器>伪类选择器>类选择器>元素选择器
+
+游览器兼容性
+  Firefox:-moz-
+  Chrome&Safari:-webkit-
+  Opera:-o-
+  IE:-ms-
+
+CSS Hack
+	CSS类内部Hack
+	CSS选择器Hack
+	HTML头部引用Hack
+		<!--[if 条件 IE 版本号]>
+			满足条件要执行的HTML代码
+		<![endif]-->
+			版本号：6~10
+			条件: gt/gte/lt/lte/!
+
+文本属性
+	color:#rgb/#rrggbb/英语单词/rgb()/rgba(); 文本颜色
+	text-align:left/center/right/justify; 水平对齐方式
+	text-decoration:none/underline/overline/line-through; 文本修饰
+	line-height: px; 行高
+	text-indent: px; 首行缩进
+	text-shadow:h-shadow v-shadow blur color; 文本阴影
+
+字体属性
+	font:style variant weight size family(必须值);
+	font-family:"微软雅黑",Arial,"黑体",...; 字体
+	font-size: px/em; 文字大小
+	font-weight:bold/normal/100倍数数字; 字体加粗
+	font-style:italic/normal; 字体样式
+	font-variant:normal/small-caps; 小型大写字母
+
+背景属性
+	background:color url() repeat attachment position;
+	background-color:#rgb/#rrggbb/英语单词/rgb()/rgba(); 背景颜色
+	background-image:url(...); 背景图片
+	background-repeat:no-repeat/repeat/repeat-x/repeat-y; 图片平铺
+	background-attachment:scroll/fixed; 背景图固定
+	background-position:w%/wpx/left/center/right h%/hpx/top/center/bottom; 背景图偏移
+	background-size:cover/contain/wpx hpx/w% h%; 背景图大小
+
+渐变
+	background-image:linear-gradient(angle,color-point1,color-point2,...); 线性渐变
+		angle => to top或0deg 从下向上填充渐变色
+		angle => to right或90deg 从左向右填充渐变色
+		angle => to bottom或180deg 从上向下填充渐变色
+		angle => to left或270deg 从右向左填充渐变色
+		color-point => 颜色 数字px/%
+	background-image:radial-gradient([size at position],color-point1,color-point2,...); 径向渐变
+		size => 数字px 半径
+		position => x%/xpx/left/center/right y%/ypx/top/center/bottom 圆心
+	background-image:repeating-linear-gradient(angle,color-point1,color-point2,...); 重复线性渐变
+		point => 数字px
+	background-image:repeating-radial-gradient([size at position],color-point1,color-point2,...); 重复径向渐变
+	
+表格
+	vertical-align:top/middle/bottom; 单元格数据的垂直对齐方式
+	border-collapse:separate/collapse; 边框合并
+	border-spacing:value/v1 v2; 边框边距
+	caption-side:top/bottom; 标题位置
+	table-layout:auto/fixed; 显示规则
+
+浮动定位
+	float:left/right/none; 浮动,脱离文档流
+	clear:left/right/none/both; 清除前面浮动元素的影响
+
+定位
+	position:static/relative/absolute/fixed;
+	top/right/bottom/left: px/%; 偏移属性
+	z-index:数字; 堆叠顺序
+
+显示方式
+	display:none/block/inline/inline-block/table/...; 
+
+显示效果
+	visibility:visible/hidden; 显示/隐藏元素
+	opacity:0~1; 透明度
+	vertical-align:top/middle/bottom/baseline; 图片垂直方向对齐方式
+	cursor:pointer/default/crosshair/text/wait/help; 鼠标悬停光标状态
+
+列表
+	list-style:none; 取消列表样式
+	list-style:type url() position;
+	list-style-type:...;列表项标志
+	list-style-image:url(...); 列表项图像
+	list-style-position:outside/inside;列表项位置
+
+尺寸属性  取值:以px或%为单位的数值
+  width 宽度
+  min-width 最小宽度
+  max-width 最大宽度
+  height 高度
+  min-height 最小高度
+  max-height 最大高度
+
+尺寸单位
+  px 像素
+  in 英寸
+  pt 磅
+  cm 厘米
+  mm 毫米
+  em 相对于父元素乘以倍数
+  rem 相对于根元素乘以倍数
+  % 相对单位
+
+颜色选择
+	transparent 透明
+  rgb(0~255,0~255,0~255)
+  rgb(r%,g%,b%)
+  rgba(0~255,0~255,0~255,0~1)
+  #rrggbb 0~9/a~f/A~F	
+	#rgb
+  英文单词
+
+溢出处理
+	overflow/overflow-x/overflow-y:visible/hidden/scroll/auto;
+
+边框
+	border:none/0; 取消边框
+	border:width style color;
+		style =>solid/dotted/dashed
+	border-top/right/bottom/left:width style color;
+	border-width/style/color:值;
+	border-方向-属性:值;
+	
+边框倒角
+	border-radius: px/%;
+
+边框阴影
+	box-shadow: h-shadow v-shadow blur spread color inset;
+		h-shadow 阴影的水平偏移距离
+			取值为正,阴影右偏移;取值为负,阴影左偏移.	
+		v-shadow 阴影的垂直偏移距离
+			取值为正,阴影下偏移;取值为负,阴影上偏移.
+		blur 模糊距离
+			取值:以px为单位的数值
+		spread 阴影的大小
+			取值:以px为单位的数值
+		color 阴影颜色
+		inset 将默认的外阴影改为内阴影
+
+轮廓
+	outline:none/0; 取消轮廓
+	outline:width style color;
+
+款模型
+	box-sizing:content-box/border-box;
+
+内边距
+	padding: px/%;
+	padding-top/right/bottom/left: px/%;
+
+外边距
+	margin: px/%;
+	margin:0 auto; 水平居中
+	margin-top/right/bottom/left:值; 取值为负,元素向相反方向移动.
+
+内容生成
+	content:"string"/url(...);
+	.clear:after{content:"";display:block;clear:both;} 清除浮动对父元素高度影响
+	.table:before{content:"";display:table;} 清除子元素外边距的溢出
+
+弹性布局
+	容器 text-align失效
+		display:block/inline-block; 定义容器
+		flex-direction:row/row-reverse/column/column-reverse; 定义主轴和起点
+		flex-wrap:nowrap/wrap/wrap-reverse; 项目换行
+		justify-content:flex-start/flex-end/center/space-between/space-around; 项目在主轴的对齐方式
+		align-items:flex-start/flex-end/center/baseline/stretch; 项目在交叉轴的对齐方式
+	项目 float,clear,vertical-align失效
+		order:整数; 项目排序
+		flex-grow:整数; 占剩余空间
+		flex-shrink:整数; 缩小占比
+		align-self:flex-start/flex-end/center/baseline/stretch/auto; 交叉轴对齐方式
+
+过渡
+	transition:property duration timing-function delay;
+	transition-property:all/属性名; 过渡属性
+	transition-duration: s/ms; 过渡的时间
+	transition-timing-function:ease/linear/ease-in/ease-out/ease-in-out; 过渡速度时间函数
+	transition-delay: s/ms; 延迟时间
+
+动画
+	@keyframes 动画名称{      定义动画
+		0%{动画开始时的样式}
+		...
+		100%{动画结束时的样式}
+	}
+	animation:name duration timing-function delay iteration-count direction;
+	animation-name:动画名称;  调用动画
+	animation-duration: s/ms;	 动画时长
+	animation-timing-function:ease/linear/ease-in/ease-out/ease-in-out; 速度时间函数
+	animation-delay: s/ms; 延迟时长
+	animation-iteration-count:infinite/数字; 播放次数
+	animation-direction:normal/reverse/alternate; 播放方向
+	animation-fill-mode:none/forwards/backwards/both; 播放前/后的状态
+	animation-play-state:paused/running; 播放状态
+
+转换
+	transform-origin:px/%/left/center/right px/%/top/center/bottom; 转换原点
+	transform:none;
+	transform:
+		translate(x)/translate(x,y)/translateX(x)/translateY(y)  2D位移
+		scale(v)/scale(x,y)/scaleX(x)/scaleY(y)  2D缩放
+		rotate(Ndeg)  2D旋转
+		skewX(xdeg)/skewY(ydeg)/skew(x)/skew(x,y)	 2D倾斜
+		rotateX(xdeg)/rotateY(ydeg)/rotateZ(zdeg)/rotate3D(x,y,z,ndeg)  3D旋转
+	perspective: px;  3D透视距离	
