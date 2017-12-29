@@ -1,0 +1,3 @@
+# note
+
+My notes of learning web develop contain html, css, js, php, mysql, nodejs, vue, angular, react... ...
