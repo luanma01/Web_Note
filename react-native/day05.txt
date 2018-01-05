@@ -1,0 +1,199 @@
+一、移动的应用程序
+①WebApp 基于网页的，基于浏览器的
+	比如网页版的淘宝，京东
+	优势在于强大的跨平台
+②NativeApp （使用原生开发）
+	原生开发：调用 Google/Apple所提供的SDK中提供的原生的接口或者服务，构建用户的可以安装在手机上执行的安装包，称作为Android/iOS的原生开发
+	直接可以安装在手机的操作系统的app称之为原生的app
+
+	比如安装在手机中的微信
+	优势在于良好的性能
+③HybridApp （使用前端技能）-->下周会有详细课程
+	混合编程：混合使用前端开发技能和原生开发技能进行开发而生成的可以安装在手机上的安装包
+	html/css/js + 原生Android Webview/iOS uiWebView
+	
+	
+每日一练：
+	使用今天所学习到的各个组件来实现ToDoBox
+	在app/components目录中，创建一个文件夹 todobox,创建以下4个文件：
+		ToDoBox.js
+		ToDoInput.js
+		ToDoItem.js
+		ToDoList.js
+	
+	希望能够将todobox放到index.android.js中渲染出来
+
+	参考着昨天todobox的实现方式。
+
+	1组件类的创建和使用
+	2实现add 
+		①在todobox中定义一个状态 是个数组
+		②在todoinput中点击按钮时，将输入框中的值
+		发送给todobox，todobox接收并保存在数组中
+		③todobox将数组通过属性传递给todolist，todolist接收去显示
+	3实现delete
+		①todobox定义一个删除数据的带有参数的方法
+		②传递给todolist
+		③todolist再传递给todoitem
+	
+	总结：
+		①RN中的组件
+			Text/View/Button/TextInput/FlatList
+			StyleSheet fetch touchableOpacity
+		②父--->子
+			props down
+				步骤1：调用子组件时 通过属性去传值
+				<ToDoItem content={info.item}/>
+				步骤2：在子组件中，接收通过属性传来的值
+				render(){
+					return <View>
+						<Text>{this.props.content}</Text>
+					</View>
+				}
+		③子--->父
+			ToDoInput想要给ToDoBox传值
+			步骤1：
+				在ToDoBox中 定义一个带有参数的方法
+				saveMsg(msg){
+					//msg就是父组件希望得到的值
+				}
+			步骤2：
+				在ToDoBox中 调用ToDoInput时 通过属性传递方法
+				<ToDoInput funcSave={this.saveMsg}/>
+			步骤3：
+				在ToDoInput中调用传递来的方法并传值
+				this.props.funcSave(123);
+		④flatList所指定的data发生了变化，但是视图却没有更新
+			<FlatList extraData={this.state}/>
+		⑤当通过属性传递给组件的数据，发生变化时，
+		子组件如何接受这个变化并更新内部的状态？
+			componentWillUpdate
+			componentDidUpdate
+
+			componentWillReceiveProps(允许在内部修改状态的)
+
+
+一、RN的组件
+	1、ActivityIndicator
+		指定一个加载中的图标
+		步骤1：
+			import {ActivityIndicator} from 'react-native'
+		步骤2：
+			<ActivityIndictator/>
+
+	2、KeyboardAvoidingView
+		作为一个容器去使用，用来解决出现视图被弹出的键盘遮住的问题
+		
+		步骤1：
+		引入
+		步骤2：
+			<KeyboardAvoidingView>
+				<TextInput/>
+				<Text></Text>
+			</KeyboardAvoidingView>
+	3、switch
+		switch是一个受控组件
+			步骤1：引入
+			步骤2：
+				初始化状态，并将状态中的值 绑定到Switch的value属性上边
+				<Switch value={this.state.myValue}>
+			步骤3：
+				指定当操作Switch时，设置状态
+				handleChange=(msg)=>{
+					this.setState({myValue:msg})
+				}
+				<Switch 
+				onValueChange={this.handleChange}
+				value={this.state.myValue}>
+
+二、RN中组件之间的跳转和传参
+	
+	复习Vue/Angular的路由模块的使用方式：
+	1、Vue的SPA的实现方式
+		基本步骤：
+			①引入vue-router.js
+			②指定容器
+				<router-view></router-view>
+			③创建要用到的组件
+			④配置路由词典
+				new Vue({
+					router:new VueRouter({
+						routes:[
+							{path:'/login',component:LoginComponent},
+							{path:'*',component:NotFound}
+						]
+					})
+				})
+		传递参数：
+			①明确发送方 接收方
+			②配置接收方的路由地址
+			[
+				{
+					path:'/detail/:id',
+					component:DetailComponent
+				}
+			]
+			③准备接收
+				this.$route.params
+			④准备发送
+				this.$router.push('/detail/10')
+	2、Angular实现SPA的基本步骤：
+			①让AppModule依赖于RouterModule
+			②指定容器
+				<router-outlet></router-outlet>
+			③创建要用到的组件
+			④配置路由词典
+				const myRoutes = [
+					{path:'',component:Index},
+					{path:'login',component:Login},
+					{path:'**',component:NotFound}
+				]
+
+	在ReactNative的开发过程中，会使用React Navigation来实现组件之间的跳转和传参
+
+	reactnavigation.org
+	2.1 基本步骤
+		步骤1：先去安装
+			npm install --save  react-navigation
+			在安装的同时，会自动的将当前安装的包名称和版本号 写入到当前工程的package.json文件的dependencies
+		步骤2：引入
+			import {StackNavigator} from 'react-navigation'
+
+		步骤3：创建要用到的组件
+
+		步骤4：配置路由词典
+			const RootNavigator = StackNavigator({
+				myList:{screen:ListComponent},
+				myDetail:{Screen:DetailComponent}
+			})
+		步骤5：让路由词典生效
+			AppRegistry.registerComponent('myApp',()=>RootNavigator)
+
+	2.2 跳转
+		this.props.navigation.navigate('路由地址');
+		举例：
+		this.props.navigation.navigate('myDetail');
+
+		练习：（16:30 - 16:45）
+			创建文件夹app/components/ComponentSPA，
+			在该文件夹中创建两个文件 login.js main.js
+			要求：
+				①在app启动默认加载login
+				②login 放上一个按钮，在单击，跳转到main
+
+	2.3 参数的传递
+		①明确发送 接收
+			cart--hello world-->order
+		②准备接收
+			this.props.navigation.state.params.id
+		③准备发送	
+			this.props.navigation
+			.navigate('myDetail',{id:10})
+
+	
+	每日练习：
+		创建app/components/lianxi，在该文件夹中创建三个文件
+		check.js pay.js send.js
+		check: 按钮 在单击时跳转到pay （同时发送一个参数price:100）
+		pay：点击按钮跳转到send (接收参数并显示)
+		send：点击按钮 跳转到check

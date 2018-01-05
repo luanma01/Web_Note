@@ -1,0 +1,209 @@
+http://jsonplaceholder.typicode.com/users
+
+代替蓝蝶（Android模拟器、虚拟机）的一种方案：
+	①找到eclipse
+		C:\adt-bundle-windows-x86_64-20130522\adt-bundle-windows-x86_64-20130522\eclipse
+	②打开eclipse.exe
+
+	③检查工具条是否显示，
+		如果没显示 windows->show toolbar
+
+	④在工具条中 从左边数 第六个按钮（Android Virtual Device Manager）
+
+	⑤在虚拟设备的列表中 选中AVDName名称为123的模拟器，
+	start -> launch
+
+一、ReactNative的常用组件
+
+1、Text
+	展示文本
+	<Text> some text </Text>
+
+2、View
+	指定一个容器
+	<View>
+		<Text></Text>
+	</View>
+
+3、StyleSheet
+	①创建
+		import {StyleSheet} from 'react-native';
+		const myStyle = StyleSheet.create({
+			myH1:{
+				fontSize:20
+			},
+			myH2:{
+				fontSize:15
+			},
+			myColor:{
+				color:'red'
+			}
+		})
+	②使用
+		<Text style={myStyle.myH2}></Text>
+		<Text style={[myStyle.myH2,myStyle.myColor]}></Text>
+
+		在styleSheet中创建的myColor等 要遵循小驼峰式的命名方式
+	
+4、react核心概念
+	props
+		<Component3 myName='zhagnsan'/>
+		<Text>{this.props.myName}</Text>
+	state
+		①初始化
+		constructor(){
+			super();
+			this.state = {
+				count:1
+			}
+		}
+		②读状态的值
+		this.state.count;
+
+		③写
+		this.setState({count:2});
+
+	创建一个ng的组件类：
+		import {Component} from '@angular/core'
+		import {Router} from '@angular/router'
+		@Component({
+			selector:'demo01',
+			template:'<h1></h1>'
+		})
+		
+		export class Demo01Component {
+			constuctor(private myRouter:Router){}
+
+			jump(){
+				this.myRouter.navigateByUrl('/login')
+			}
+		}
+
+5、Button
+	
+	使用步骤：
+		①import {Button} from 'react-native'
+		②<Button title="clickMe" onPress={this.handlePress}>
+		</Button>
+
+	练习：在components创建文件夹 componentLianxi,在该文件夹中创建一个js文件 lianxi.js
+		在lianxi.js文件中  创建一个组件类
+		在该组件类中有一个按钮
+		点击按钮时，按钮中文本变为开/关
+
+		考察知识点：
+			state、Button
+
+6、FlatList
+	由RN封装的一个高性能的列表
+	最少要指定两个属性，分别是data和renderItem，
+	通过data指定要渲染什么样的数据，通过renderItem去指定将数据渲染在什么样的组件
+
+	①import {FlatList} from 'react-native'
+	② 定义一个渲染数据的方法
+		//info {item:'',index:0}
+		//item是data属性所指定的集合中的元素
+		//index就是下标，或者遍历集合时数字
+		showItem=(info)=>{
+			return <Text>{info.item}</Text>
+		}
+	③
+	<FlatList 
+		renderItem={this.showItem}
+		data={this.state.list}>
+	</FlatList>
+
+7、Image
+	基本用法：
+	①引入
+	import {Image} from 'react-native'
+	②调用
+  <Image source={require("../../img/1.jpg")} />
+	<Image source={{uri:''}}>
+
+	注意事项：
+	如果希望在通过require引入本地的资源图片时，记住是不允许存在字符串的拼接的
+
+Text View Button StyleSheet Image FlatList
+
+
+8、TextInput
+
+	placeholder
+	onChangeText
+	secureTextEntry
+	keyboardType
+
+	①引入
+	import {TextInput} from 'react-native'
+	②调用
+	<TextInput placeholder='请输入密码' secureTextEntry={true} onChangeText={this.handleChangeText}
+	keyboardType="numeric"
+	/>
+	
+9、TouchableOpacity
+
+	主要封装组件，让组件支持在触摸或者点按时，有透明度变化的效果
+
+	用法：主要是作为容器，将需要添加点按透明度变化效果的元素，放在容器中；支持onPress的
+
+	<TouchableOpacity>
+		<Text></Text>
+	</TouchableOpacity>
+
+	<TouchableOpacity>
+		<Image source={require('../../img/1.jpg')}/>
+	</TouchableOpacity>
+
+10、请求服务器
+	
+		fetch('myUrl')
+		.then((response)=>{response.json()})
+		.then((response)=>{})
+
+	练习：(16:45 - 17:00)
+		在app/components/componentLianxi中创建testserver.js
+
+		组件类中，在组件准备挂载的时候，向服务器端发起请求，并将数据渲染在flatList中(将uname显示在列表中)
+
+		①初始化状态 list:[]
+		②渲染一个FlatList data={this.state.list}
+		③componentWillMount
+			fetch 
+			http://172.163.100.100/admin/data/user_list.php
+			修改data/init.php中端口号
+
+
+11、在RN中使用flexbox注意事项
+	ReactNative默认采用的主轴是column
+	①flexDirection
+		row column 指定主轴是横向还是纵向
+	②justifyContent
+		主轴方向上的对齐方式
+	③alignItems
+		次轴方向上的对齐方式
+
+
+总结：
+	Text 文本
+	View 容器
+	Button 按钮
+	FlatList 列表
+	Image 图片
+	StyleSheet 样式设置 ----
+	fetch 服务器端的交互 ----
+	flexbox 对齐、居中让界面更好看 ---
+	TextInput 文本输入框
+  TouchableOpacity  给使用的组件添加上点按或者触摸时透明度变化的效果
+
+每日一练：
+	使用今天所学习到的各个组件来实现ToDoBox
+	在app/components目录中，创建一个文件夹 todobox,创建以下4个文件：
+		ToDoBox.js
+		ToDoInput.js
+		ToDoItem.js
+		ToDoList.js
+	
+	希望能够将todobox放到index.android.js中渲染出来
+
+	参考着昨天todobox的实现方式。

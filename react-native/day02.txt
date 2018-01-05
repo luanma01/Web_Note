@@ -1,0 +1,200 @@
+一、组件
+组件是一个可被反复使用的，带有特定功能的视图
+	1、组件的创建和使用
+		Vue:
+			Vue.component()
+			new Vue({
+				components:
+			})
+		angular:
+			@Component({})
+			export class
+		1.1 组件的创建
+			var TestComponent = React.createClass({
+				render:function(){
+					return <h1>it is a test</h1>
+				}
+			})
+
+		1.2 组件的调用
+			<TestComponent></TestComponent>
+		
+		注意事项：
+		①首字母大写
+		②不允许直接在render方法中去换行，但是可以通过圆括号去处理
+		③不允许直接返回多个要渲染的元素
+
+	2、复合组件
+		复合组件就是在一个组件中去调用其它的组件
+
+二、props
+
+	React中组件间的通信是可以通过props来实现。
+
+	Vue
+		<son myName="zhangsan"></son>
+		Vue.component('son',{
+			props:['myName']
+		})
+	Angular
+		<son myName="zhangsan"></son>
+		
+		import {Input} from '@angular/core'
+		export class SonComponent{
+			@Input() myName:string = "";
+			//读取
+			this.myName
+		}
+
+	React
+		1、基本用法
+			步骤1：传值
+				<Son myName="zhangsan"></Son>
+			步骤2：接收值
+				在子组件中：
+					this.props.myName
+
+			练习：(10:50 - 11:05)
+				有一个登录窗口
+				要求封装3个组件
+				LoginComponent
+				MyInputComponent
+				ButtonComponent
+
+				①组件的创建和使用
+				②复合组件的写法
+				③props传值的实现方式
+				④jsx
+		2、 this.props.children
+			指的是组件在调用时，内部所写的标签；类型是不确定的，如果内部没东西，就是Undefined；如果有一个，就是object，如果有多个array；可以使用React.Children.map做遍历，帮助减少操作时异常处理。
+
+			React创建的组件类中的props对象的属性和调用组件时传递的属性是一一对应的
+			在props对象中有一个children属性是特殊的。
+
+		3、props传递方法
+			①在父组件中定义方法
+				login:function(uName){}
+			②调用子组件时 通过属性传递方法
+				<ButtonComponent func={this.login}/>
+			③在子组件中调用父组件传递来的方法
+				this.props.func('zhangsan');
+
+			props传递方法，实现父与子通信（传递的是方法），子与父通信（在调用方式同时传递参数）
+		
+		注意事项：
+			无法在子组件中 修改父组件所传递来的数据
+			this.props.btnName = 'test' 错误的
+
+三、ref
+	步骤1：
+		<any ref="myRef"></any>
+	步骤2：
+		this.refs.myRef 得到真正的DOM或者组件的实例对象
+
+	练习：
+		新建一个文件demo07_lianxi.html
+		在该文件中 创建一个组件，在组件的模板中有两个输入框和一个按钮；
+		点击按钮时，将输入框中的内容求和，并将结果显示在控制台中
+
+
+综合练习：
+	MyInputComponent: input
+	MyButtonComponent: button
+	MainComponent:上述两个组件构成的
+	MyButtonComponent中的按钮点击时，想要获取MyInputComponent中input中数据
+	属于兄弟组件通信，可以借助于共同的父组件来实现
+	步骤0：
+		在调用MyInputComponent指定ref=“myInput”
+	步骤1：
+		在父组件中定义一个方法：
+				是用来获取子组件中用户所输入的值
+				this.refs.myInput
+	步骤2：
+		传递给MyButtonComponent，在MyButtonComponent按钮单击时调用上述方法
+		目的是希望：在子组件中 让父组件做一件事
+
+		组件的创建和使用
+		ref
+		props
+		jsx
+		组件间通信
+			Main --func--> MyButton
+			Main(this.refs.myInput) <--ref-- MyInputComponent
+
+		子组件与父组件通信的步骤：
+			①在父组件中定义一个带有参数的方法
+				saveMsg:function(msg){
+				}
+			②调用子组件时，将方法传递给子组件
+				<MyInputComponent funcSave={this.saveMsg}/>
+			③在子组件内部，调用父组件传递来的方法
+				this.props.funcSave('123');
+		父组件与子组件通信的步骤：
+		①指定属性
+			<ButtonComponent btnName="登录"/>
+		②接收属性的值
+			this.props.btnName
+
+四、state
+	React比较创建引入了state的概念，将组件比作是一个状态机，组件所呈现的任何的变化都可以通过state来管理
+
+	功能：
+		①管理数据
+		②数据绑定
+
+	三个基本操作：
+		1、初始化数据
+			在组件类的内部指定一个方法
+				getInitialState:function(){
+					return {
+						count:1
+					}
+				}
+		2、读数据
+				this.state.count
+		3、修改数据
+				this.setState({count:2});
+	
+	练习：
+		demo10_lianxi.html
+		创建一个组件，在组件中有一个按钮，有一个h1.
+		当点击按钮时，启动定时器，每隔1s, 修改h1标签的透明度(0~1 0~1)
+
+		①完成组件的创建和显示
+		②初始化一个数据
+			保存的是透明度的数据
+		③按钮单击启动定时器，修改状态
+		④调用状态
+		<h1 style="opacity:0.2"></h1>
+		--->
+		style={{opacity:this.state.***}}
+
+
+五、组件的生命周期
+	Vue:
+		create/mount/update/destroy
+		beforeCreate created
+		beforeMount mounted
+		...
+	Angular:
+		ngOnInit 
+		ngOnChanges
+		ngDoCheck
+				ngAfterContentInit
+				ngAfterContentChecked
+				ngAfterViewInit
+				ngAfterViewChecked
+		ngOnDestroy
+	
+	React:
+		mount udpate unmount
+
+		componentWillMount
+		componentDidMount
+		（和挂载）
+		componentWillUpdate
+		componentDidUpdate
+		(和数据-props-state发生变化)
+		componentWillUnmount
+		（移除）
+		compoenntWillReceiveProps 当调用组件所传递的属性对应的值发生变化的时候，自动调用方法（允许修改状态）

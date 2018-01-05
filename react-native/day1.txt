@@ -1,0 +1,109 @@
+learn once,write anywhere
+(vue对应的移动端app解决方案：weex)
+
+ReactJS
+	React的5大核心概念
+ReactNative
+	利用React的5大核心概念，结合着RN所提供的移动端的组件编写原生的app的页面
+项目：原生的移动端的app
+
+
+Vue = angular+React
+
+一、ReactJS概述
+
+	5大核心概念：
+
+		组件
+		Props
+		ref
+		state
+		jsx
+
+	1、what？
+		bootStrap angular vue react(fb)
+		https://reactjs.org/
+		是一个用来构造UI的js的库
+
+	2、why
+		①声明范式
+		②基于组件化的开发方式
+		③开发理念（learn once,write anywhere）
+
+	为什么推出React？
+		①浏览器性能瓶颈
+			DOM操作的成本是很高的 ，VDOM(virtual DOM虚拟DOm)
+		②代码的开发和维护成本很高
+			数据操作非常频繁，市面上多数的框架数据绑定的特点带来一些问题；jsx结合着单向数据流
+
+	3、how
+	环境搭建
+	①cli（command line interface 命令行交互界面）
+
+		//全局安装
+		npm install -g create-react-app
+		//创建一个模板项目
+		create-react-app my-app
+		//进入到项目文件夹my-app
+		cd my-app/
+		//启动开发服务器
+		npm start
+
+	②引入对应的文件
+		react.js
+		react-dom.js
+		browser.min.js
+
+
+	React代码是正确的，但是运行失败：
+		chrome-->右上角 --》设置 --》高级--》内容设置 --》 cookie-->阻止第三方cookie(开关是关的)
+
+二、jsx
+	注意事项：
+		①不允许在render方法中直接渲染多个元素，要放在一个顶层标签中
+	1、demo01
+		①babel
+			babel是一个js的编译器，支持将es6,jsx。。转换为浏览器能识别的普通的js的代码
+			bebeljs.io
+			http://babeljs.io/repl/
+		②方法
+			ReactDOM.render(要渲染的元素，渲染到的容器);
+		③jsx
+			jsx并不是一种新的语言，只不过是允许在js中编写html标签
+			（浏览器默认是不识别的，需要通过babel做一个转换）
+	2、jsx
+		如果遇到<，首字母是小写就会用html解析，否则就是按照组件的方式去解析
+		如果遇到{,就是用js去解析
+
+三、	component
+	注意事项：
+		①组件类的名称的首字母必须是大写的
+
+	组件是一个可被反复使用的，带有特定功能的视图
+	1、组件的创建和使用
+		Vue:
+			Vue.component()
+			new Vue({
+				components:
+			})
+		angular:
+			@Component({})
+			export class
+		1.1 组件的创建
+			var TestComponent = React.createClass({
+				render:function(){
+					return <h1>it is a test</h1>
+				}
+			})
+
+		1.2 组件的调用
+			<TestComponent></TestComponent>
+
+
+	2、复合组件
+		复合组件就是在一个组件中去调用其它的组件
+
+	每日一练：
+		①ng项目中功能做完整
+		②React
+			创建一个组件 HelloComponent,组件渲染一个无序列表
