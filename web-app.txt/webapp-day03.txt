@@ -1,0 +1,90 @@
+Day03 Ionic 组件
+
+
+1. Button 按钮
+	1.1 基本按钮 <button>button...</button>
+	1.2 外边框按钮 outline
+	1.3 无边框按钮 clear
+	1.4 圆角按钮 round
+	1.5 块级按钮 block
+	1.6 按钮大小 small large
+	1.7 图标按钮 <button> - <ion-icon name=""> - 文本
+2. Ionic 的页面位于 app 项目目录/src/pages/
+3. 每个页面的存在形式是一个目录，目录名和内部的所有文件同名
+		3.1 home.html 网页模板
+		3.2 home.scss 网页的样式
+		3.3 home.ts
+
+4. 为 Ionic 应用创建一个新的页面 page：
+	 在项目目录 blank-app/ 下执行命令：
+	  ionic generate page button
+5. Ionic 页面跳转 (HomePage -> ButtonPage)
+	5.1 修改文件 src/app/app.module.ts
+		a. 引入新的页面 ButtonPage
+		b. 把 ButtonPage 声明在 declarations 数组中
+		c. 把 ButtonPage 声明在 entryComponents 数组中
+	5.2 修改文件 src/pages/home/home.ts
+		a. 引入新的页面 ButtonPage
+		b. 在 HomePage 类里声明属性 buttonPage
+		c. 在 HomePage 类的构造器里 
+		   this.buttonPage = ButtonPage;
+	5.3 修改文件 src/pages/home/home.html
+		a. 创建一个按钮 
+		   <button ion-button>按钮示例</button>
+		b. 为 button 添加属性
+			 [navPush]="buttonPage"
+
+6. List 列表
+	6.1 创建列表页面：ionic generate page list
+	6.2 在 HomePage 中添加一个按钮，点击按钮跳转到 ListPage
+	6.3 IDEA 的配置：File-Settings-搜索 sensitive，修改 First Letter 为 None
+	6.4 基本列表, 列表：<ion-list> 列表项：<ion-item>
+	6.5 按钮作为列表项 <button ion-item>
+	6.6 列表边距 inset
+	6.7 无分隔线列表 no-lines
+	6.8 列表分割项 <ion-item-group> <ion-item-divider>
+	6.9 列表头部 <ion-list-header>
+	6.10 图标作为列表项 <ion-icon name="heart" item-start color="danger">
+	6.11 头像作为列表项 <ion-avatar item-start>
+	https://iconfinder.com
+	静态资源存放位置：src/assets/avatar/tom.png
+	引入资源时从 assets/.../... 路径开始引入
+	6.12 滑动列表项 <ion-item-sliding> <ion-item-options>
+
+	6.13 列表项数据来自于类
+		a. <button ion-item *ngFor="let item of items">{{item}}</button>
+		b. 修改文件 src/pages/list/list.ts
+			 添加类属性 items=['Tom', 'Jerry',...];
+		d. 添加点击事件 (click)="itemSelected(item)"
+		e. 在类中定义事件函数 
+				itemSelected(item:string) {
+					// ...
+				}
+
+7. Card
+	7.1 创建 CardPage 页面，执行：
+			ionic generate page card
+	7.2 HomePage 添加按钮 
+	    <button [navPush]="cardPage">Card</button>
+	7.3 点击按钮跳转到 CardPage
+			a. import {CardePage} ...
+			b. class 中：cardPage;
+			c. constructor 中：this.cardPage = CardPage;
+	7.4 基本卡片
+			<ion-card>
+				<ion-card-header>
+					头部
+				</ion-card-header>
+				<ion-card-content>
+					内容
+				</ion-card-content>
+			</ion-card>
+	7.5 列表内容卡片
+	7.6 主题图片卡片
+			<ion-card-title>
+
+8. Ionic Dev App 的使用
+	8.1 下载 Google Play / Apple Store
+	8.2 PC 上开发一个 Ionic 的 APP
+	8.3 手机连接网络，和电脑同一个网络
+	8.4 打开应用，连接调试

@@ -1,0 +1,48 @@
+练习：创建一个 Android 应用，启动页面加载 bing 网站首页
+
+WEBAPP Day02
+
+IDEA / WebStorm 常用快捷键
+1. Alt + Enter 快捷修复
+2. Ctrl + B 前往定义处
+3. Shift + Alt + F10 选择运行
+4. Alt + F12 打开命令行
+
+一、Webview
+1. 修改启动页的文本
+	1.1 修改 res/layout/activity_main.xml 文件：android:text="Hello, Android!"
+	1.2 在警告上 Alt + Enter 快捷修复，选择第一个修复方案，默认确定：会把文本抽取为 String 资源，位置在 res/values/strings.xml
+	1.3 继续修改了文本的字体大小：textSize（sp是 Android 的尺寸单位）
+	和文本的颜色：textColor
+2. Webview 是 Android 以及 iOS 的一种特殊的视图组件
+3. Webview 是基于 webkit 内核的视图控件
+4. Webview 可以加载任意文件或网页 
+5. 修改 java/package/MainActivity.java 类，注释原有的视图
+6. 创建一个 Webview 的一个实例、对象：Webview webview = new Webview(this);
+7. 创建一个 WebSettings 的一个实例：WebSettings webSettings = webview.getSettings();
+8. 设置启用 JavaScript：webSettings.setJavaScriptEnabled(true);
+9. 加载网页 URL：webView.loadUrl("http://cn.bing.com/");
+10. 更改视图为当前的 webview: setContentView(webView);
+11. 修改清单文件 main/AndroidManifest.xml，添加网络访问权限：<uses-permission android:name="android.permission.INTERNET"/>
+
+二、Ionic [aɪ'ɒnɪk] 离子
+1. 官网：https://ionicframework.com
+2. 使用前端技术(HTML,CSS,JavaScript,Angular,Typescript)，开发移动应用的框架，一次编写，各移动平台（Android iOS）直接运行
+3. Ionic 基于 Angular、Cordova http:cordova.apache.org
+4. 开源、免费的软件 FOSS RN
+5. 基于 Angular，Google 、MS Typescript
+6. 应用风格漂亮, Ionic CLI
+7. 社区活跃
+8. Ionic 开发环境的搭建
+9. 安装 Node.js
+10. 安装 node 镜像：cmd: 
+		npm i -g cnpm --registry=https://registry.npm.taobao.org
+10. 安装 Ionic，cmd：npm i -g ionic
+11. 安装 Cordova，cmd：npm i -g cordova
+12. 全局模块的位置：C:\Users\web-01\AppData\Roaming\npm\node_modules
+13. 创建一个 Ionic 项目：ionic-1708N
+14. 在 ionic-1708N 下，打开命令行，执行：
+		ionic start blank-app blank，基于 Ionic 的 blank 模板创建一个 Ionic 的应用：blank
+		-app
+15. 执行时，在线下载 blank 模板的基本内容，之后出现一个提示，选择N，回车
+16. 下载 package.json 配置的所有的依赖模块，进入 blank-app 目录，执行命令：cnpm i
