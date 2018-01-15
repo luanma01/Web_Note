@@ -2,101 +2,100 @@
 Day04 Ionic / Node.js Express
 
 一、Ionic 组件
-1. FAB
-	1.1 Floating Action Button 浮动操作按钮
-	1.2 创建新的页面 fab，从 HomePage 点击按钮跳转到 FabPage
-	1.3 基本结构
-			<ion-fab>
-					<button ion-fab>	默认显示的图标按钮
-							<ion-icon></ion-icon>
-					</button>
-					<ion-fab-list>	点击后显示的图标按钮
-							<button ion-fab>
-									<ion-icon></ion-icon>
-							</button>
-					</ion-fab-list>
-			</ion-fab>
-	1.4 <ion-fab-list side="">	指定浮动按钮出现的位置
-			a. top
-			b. bottom
-			c. left
-			d. right
+	1. FAB
+		1.1 Floating Action Button 浮动操作按钮
+		1.2 创建新的页面 fab，从 HomePage 点击按钮跳转到 FabPage
+		1.3 基本结构
+				<ion-fab>
+						<button ion-fab>	默认显示的图标按钮
+								<ion-icon></ion-icon>
+						</button>
+						<ion-fab-list>	点击后显示的图标按钮
+								<button ion-fab>
+										<ion-icon></ion-icon>
+								</button>
+						</ion-fab-list>
+				</ion-fab>
+		1.4 <ion-fab-list side="">	指定浮动按钮出现的位置
+				a. top
+				b. bottom
+				c. left
+				d. right
 
-2. Gesture  ['dʒestʃə(r)]  手势动作
-	2.1 创建页面 GesturePage, HomePage 链接到这个页面2.2 手势动作
-		a. tap 轻点
-		b. press 点按
-		c. pan 移动
-		d. swipe 滑动
-	2.3 进程占用问题
-		a. 取得端口号：8100
-		b. 找到占用端口的进程
-			 执行 dos 命令：netstat -ano | findstr 8100
-		c. 执行 dos 命令：taskkill /f /pid 4952
-		
-3. Grid 栅格系统
-	3.1 创建页面 GridPage, HomePage 链接到这个页面
-	3.2 类似于 Bootstrap 的栅格系统
-	3.3 当前 box 每行 12 等分
-	3.4 基本标记 <ion-grid> <ion-row> <ion-col>
-	3.5 指定列宽度 col-1...12
-	3.6 列偏移 offset-1...11
+	2. Gesture  ['dʒestʃə(r)]  手势动作
+		2.1 创建页面 GesturePage, HomePage 链接到这个页面2.2 手势动作
+			a. tap 轻点
+			b. press 点按
+			c. pan 移动
+			d. swipe 滑动
+		2.3 进程占用问题
+			a. 取得端口号：8100
+			b. 找到占用端口的进程
+				执行 dos 命令：netstat -ano | findstr 8100
+			c. 执行 dos 命令：taskkill /f /pid 4952
+			
+	3. Grid 栅格系统
+		3.1 创建页面 GridPage, HomePage 链接到这个页面
+		3.2 类似于 Bootstrap 的栅格系统
+		3.3 当前 box 每行 12 等分
+		3.4 基本标记 <ion-grid> <ion-row> <ion-col>
+		3.5 指定列宽度 col-1...12
+		3.6 列偏移 offset-1...11
 
-4. Form 表单
-	4.1 创建页面 FormPage, HomePage 链接到这个页面
-	4.2 ion-label 提示标签 floating 浮动标签
-	4.3 ion-input 输入框 type="password" 输入类型
-	4.4 ion-checkbox 复选框
-	4.5 ion-datetime 日期 / 时间
-	4.6 ion-radio 单选按钮
-		a. 分组 <ion-list radio-group>
-		b. ion-radio
-	4.7 ion-range 滑块
-	4.8 ion-select ion-option 下拉列表 列表项
-	4.9 表单控件相关属性
-		a. checked 默认勾选，用于 checkbox radio
-		b. selected 默认选择，用于 select
-		c. disabled 禁用
-	4.10 ion-toggle 开关
-	4.11 <searchbar>
+	4. Form 表单
+		4.1 创建页面 FormPage, HomePage 链接到这个页面
+		4.2 ion-label 提示标签 floating 浮动标签
+		4.3 ion-input 输入框 type="password" 输入类型
+		4.4 ion-checkbox 复选框
+		4.5 ion-datetime 日期 / 时间
+		4.6 ion-radio 单选按钮
+			a. 分组 <ion-list radio-group>
+			b. ion-radio
+		4.7 ion-range 滑块
+		4.8 ion-select ion-option 下拉列表 列表项
+		4.9 表单控件相关属性
+			a. checked 默认勾选，用于 checkbox radio
+			b. selected 默认选择，用于 select
+			c. disabled 禁用
+		4.10 ion-toggle 开关
+		4.11 <searchbar>
 
-5. Toast 吐司
-	5.1 创建页面 ToastPage, HomePage 链接到这个页面
-	5.2 toast.ts 中，引入 ToastController
-			import {ToastController} from "ionic-angular";
-	5.3 toast.ts 中，为构造器依赖注入（DI） ToastController
-	5.4 toast.ts 中，定义了一个函数 showToast(){//...}
-	5.5 在按钮中触发函数的执行
+	5. Toast 吐司
+		5.1 创建页面 ToastPage, HomePage 链接到这个页面
+		5.2 toast.ts 中，引入 ToastController
+				import {ToastController} from "ionic-angular";
+		5.3 toast.ts 中，为构造器依赖注入（DI） ToastController
+		5.4 toast.ts 中，定义了一个函数 showToast(){//...}
+		5.5 在按钮中触发函数的执行
 
-6. Icon 图标
-	6.1 创建页面 IconPage, HomePage 链接到这个页面
-	6.2 <ion-icon name="">
-	6.3 系统属性 ios：iOS系统 md：Android
-	 系统（Material Design）
-	6.4 属性绑定
+	6. Icon 图标
+		6.1 创建页面 IconPage, HomePage 链接到这个页面
+		6.2 <ion-icon name="">
+		6.3 系统属性 ios：iOS系统 md：Android
+		系统（Material Design）
+		6.4 属性绑定
 
-7. InfiniteScroll
-8. Refresher
+	7. InfiniteScroll
+	8. Refresher
 
 二、 用户注册功能
-9. 使用 Ionic 做用户注册页面 sign-up
-10. HomePage 点击按钮进入注册页 SignUpPage
-11. 在 SignUpPage 页面内创建表单视图
-12. 做 Node.js 基于 Express 的服务器端
-13. 在 ionic-1798N/ 下创建服务器端的目录：server
-			 ionic-1798N/
-					blank-app/		Ionic App 前端 8100
-					server/       Express 服务器端 3000
-14. 在 server/ 下执行命令
-		npm init，创建 package.json
-		生成了 package.json
-15. 在 server/ 下创建 app.js（index.js）
-16. 安装 NPM 的第三方模块：express
-		在 server/ 下执行：	cnpm i -S express
-		创建 server/node_modules
-		(未联网)：解压缩 node_modules.zip 到 server/ 下
-17. 修改 app.js 文件，实现一个简单的服务器，端口是
-3000
-18. 启动服务器，server/ 下，执行：node app.js
+	9. 使用 Ionic 做用户注册页面 sign-up
+	10. HomePage 点击按钮进入注册页 SignUpPage
+	11. 在 SignUpPage 页面内创建表单视图
+	12. 做 Node.js 基于 Express 的服务器端
+	13. 在 ionic-1798N/ 下创建服务器端的目录：server
+				ionic-1798N/
+						blank-app/		Ionic App 前端 8100
+						server/       Express 服务器端 3000
+	14. 在 server/ 下执行命令
+			npm init，创建 package.json
+			生成了 package.json
+	15. 在 server/ 下创建 app.js（index.js）
+	16. 安装 NPM 的第三方模块：express
+			在 server/ 下执行：	cnpm i -S express
+			创建 server/node_modules
+			(未联网)：解压缩 node_modules.zip 到 server/ 下
+	17. 修改 app.js 文件，实现一个简单的服务器，端口是3000
+	18. 启动服务器，server/ 下，执行：node app.js
 
-19. 练习：Ionic 发送 HTTP 请求到服务器端
+	19. 练习：Ionic 发送 HTTP 请求到服务器端
