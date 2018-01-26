@@ -1,0 +1,66 @@
+<html>
+  <body>
+    <script>
+      
+var str="ryan is not a good man";
+       //ryan5 is6 not7 a8 good9 man10
+var n=5;
+str=str.replace(/\b[a-z]+\b/ig,function(kw){
+  return kw+n++;
+});
+console.log(str);
+
+
+//计算一个只有乘法和加法的表达式的值
+//比如: 1+23*2+3*3*3
+function calc(exp){
+  var arr=exp.split("+");
+  var sum=0;
+  for(var i=0;i<arr.length;i++){
+    if(arr[i].indexOf("*")==-1)
+      sum+=parseFloat(arr[i]);
+    else{
+      var r=1;
+      var arr2=arr[i].split("*");
+      for(var j=0;j<arr2.length;j++){
+        r*=arr2[j]
+      }
+      sum+=r;
+    }
+  }
+  return sum;
+}
+console.log(calc("1+23*2+3*3*3"));
+                //1  46    27     74
+
+//查找字符串中出现次数最多的字符，共出现几次?
+var str="abdcbcdadcabce";
+//var result=
+  //str.split("")
+     //.sort()
+     //.join("")//aaabbbccccddde
+     //.match(/([a-z])\1*/g)//aaa,bbb,cccc,ddd,e
+     //.sort((a,b)=>b.length-a.length)[0];
+//console.log("出现最多的字符:"+result[0]+",共"+result.length+"个");
+var hash={};
+for(var i=0;i<str.length;i++){
+  if(hash[str[i]]!==undefined)
+    hash[str[i]]+=1;
+  else
+    hash[str[i]]=1;
+}
+var zi="",count=0;
+for(var key in hash){
+  if(hash[key]>count){
+    zi=key;
+    count=hash[key];
+  }
+}
+console.log("出现最多的字符:"+zi+",共"+count+"个");
+
+
+
+
+    </script>
+  </body>
+</html>

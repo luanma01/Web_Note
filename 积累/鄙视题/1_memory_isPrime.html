@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <title>my html</title>
+    <meta charset="utf-8">
+    <style></style>
+  </head>
+  <body>
+    <script>
+      //函数记忆:
+      //什么是: 让函数记住处理过的参数和对应的处理结果
+      //为什么: 避免重复计算，提高执行效率
+      //鄙视: 判断一个数，是不是质数
+var isPrime=(function(){
+  var hash={};
+  return function(n){
+    if(!isNaN(n)&&n>1){
+      if(n<=3) return true;
+      else if(n%2==0) return false;
+      else if(hash[n]!==undefined){
+        console.log("不用执行for循环...");
+        return hash[n];
+      }else{
+        console.log("执行for循环...");
+        for(var i=3;i<=Math.sqrt(n);i+=2){
+          if(n%i==0){
+            hash[n]=false;
+            return false;
+          }
+        }
+        hash[n]=true;
+        return true;
+      }
+    }else
+      throw new Error(
+        "必须输入>1的数字");
+  }
+})();
+//isPrime:function(n){ (hash={})
+//  ... ... 
+//}
+console.log(isPrime(117));
+console.log(isPrime(113));
+console.log(isPrime(117));
+console.log(isPrime(113));
+    </script>
+  </body>
+</html>

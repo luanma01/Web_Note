@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<script>
+  //window.a=300;
+  //function fn1(){
+    //this.a=100; this.b=200;
+    //return function(){
+      //alert(this.a); //return?
+    //}.call(arguments[0]);
+  //}
+  //function fn2(){ this.a=new fn1(); }
+  //var a=new fn1()//300
+        ///*{a:100,b:200}*/.b;
+  ////a:200
+  //var v=new fn1(
+    //fn2()/*200*/
+    ////a:{a:100,b:200}
+  //);//alert({a:100,b:200})//[object Object]
+
+
+  var setObj=function(o){
+    //o=p={name:"xiaoming",age:24}
+    o.name="xiaoming";
+    o={};//和p无关了
+    o.name="xiaohong";
+  }
+  var p={name:"xixi",age:24};
+  setObj(p);
+  console.log(p);//{name:"xiaoming",age:24}
+
+var number=2; //4 //8
+var obj={
+  number:4, //8
+  fn1:(function(){
+    this.number*=2;
+    number*=2;
+    var number=3;
+    return function(){
+      this.number*=2;
+      number*=3;
+      alert(number);
+    }
+  })()
+/*fn1:function(){(number=3,9,27)
+      this.number*=2;
+      number*=3;
+      alert(number);
+    }*/
+}
+var fn1=obj.fn1;
+alert(number);//4
+fn1();//9
+obj.fn1();//27
+alert(window.number);//8
+alert(obj.number);//8
+
+  var x=5,o={
+    x:10,
+    doit:function doit(){
+      var x=20;
+      setTimeout(
+        function(){alert(this.x)},10
+      );
+      //return ?
+    }
+  }
+  alert(o.doit());//undefined 5
+  //定时器中回调函数的this指window!
+  //function(){alert(this.x)}(x=20)
+
+  function Foo(){
+      getName=function(){alert(1)};
+      return this;
+  }
+  //静态函数: 不需要创建对象实例，就可用构造函数直接调用的函数
+  //何时: 任何数据类型都可使用的函数
+  Foo.getName=function(){alert(2)};
+  //原型对象方法: 规定只有当前类型的子对象才能使用的函数
+  Foo.prototype.getName=function(){
+    alert(3)
+  };
+  var getName=function(){alert(4)};
+  //function getName(){alert(5)};
+  Foo.getName();//2
+  getName();//4
+  Foo().getName();//1
+  //getName(){alert(1)};
+  getName();//1
+  new Foo.getName();//2
+  new Foo().getName();//3
+  new new Foo().getName();//3
+
+//  var foo=function(){
+//    console.log(this.a);
+//  },
+//  var obj={a:2,foo:foo};
+//  var a=10;
+//  var bar=obj.foo;
+//  var bar2=foo.bind(obj);
+//  bar();//10
+//  bar2();//2
+//  foo();//10
+//  obj.foo();//2
+//  setTimeout(bar,0);//10
+
+//  var str="Hello";
+//  str.len=10;
+//  //new String(str).len=10
+//  //立刻释放！
+//  console.log(str.len);//undefined
+//            //new String(str).len);
+</script>
+</body>
+</html>

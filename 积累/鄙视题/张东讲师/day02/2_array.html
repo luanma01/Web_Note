@@ -1,0 +1,49 @@
+<html>
+  <body>
+    <script>
+  //数组降维
+var arr=[
+  [0,0,0,0],
+  [0,0,0,0],
+  [0,0,0,0],
+  [0,0,0,0]
+];
+//arr=String(arr).split(",");
+arr=Array.prototype.concat.apply([],arr)
+console.log(arr);
+
+//给定降序排列好的数组:
+var arr=[8,7,6,5,4,3,2,1];
+      // i             j
+      //[1,8,2,7,3,6,4,5]
+var result=[];
+for(var i=0,j=arr.length-1;i<j;i++,j--){
+  result.push(arr[j]);result.push(arr[i]);
+}
+if(i==j) result.push(arr[i]);
+console.log(result);
+
+
+
+
+//前提:已经升序排列好了
+var arr=[1,2,4,6,9,10,12,15,17];
+       //i                   j
+var sum=19;
+for(var i=0,j=arr.length-1;i<j;){
+  if(arr[i]+arr[j]>sum)
+    j--;
+  else if(arr[i]+arr[j]<sum)
+    i++;
+  else{
+    console.log(arr[i],arr[j]);
+    i++;
+    j--;
+  }
+}
+
+
+  
+    </script>
+  </body>
+</html>

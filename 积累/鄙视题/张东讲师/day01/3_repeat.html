@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>my html</title>
+    <meta charset="utf-8">
+    <style></style>
+  </head>
+  <body>
+    <script>
+      //鄙视: 去掉数组中重复的元素
+        //(考虑百万数量级)
+      var arr=[3,1,2,1,4,2,3,2];
+      //var r=[];
+      //var hash={};
+      //for(var i=0;i<arr.length;i++){
+        ////如果r中没有arr[i]
+        //if(hash[arr[i]]===undefined){
+          //hash[arr[i]]=1;
+          //r.push(arr[i]);//才将arr[i]压入r
+        //}
+      //}
+      //console.log(r);
+
+      //不用遍历去重复
+      arr=arr.sort()//1,1,2,2,2,3,3,4
+         .join("")//11222334
+         .replace(/(\d)(\1*)/g,"$1")
+         .split("");
+      console.log(arr);
+
+    </script>
+  </body>
+</html>
